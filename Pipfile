@@ -7,6 +7,19 @@ verify_ssl = true
 
 [packages]
 flask = "*"
+flask-restplus = "*"
+Flask-Migrate = "*"
+Flask-SQLAlchemy = "*"
+marshmallow = "*"
+marshmallow_enum = "*"
+marshmallow-sqlalchemy = "*"
+mysql-connector-python = "*"
+PyJWT = "*"
+SQLAlchemy-Utils = "*"
+webargs= "*"
+
+
+
 
 [requires]
 python_version = "3.7"
