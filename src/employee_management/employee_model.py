@@ -2,7 +2,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_utils import EmailType
 from werkzeug.security import generate_password_hash, check_password_hash
-from src.db import db
+from src.app import db
 
 
 class Employee(db.Model):
@@ -11,7 +11,7 @@ class Employee(db.Model):
 
     }
     id = db.Column(
-        db.Integer(40),
+        db.Integer,
         primary_key=True
     )
     firstName = db.Column(
@@ -34,7 +34,7 @@ class Employee(db.Model):
         nullable=False
     )
     gender = db.Column(
-        db.Unicode(40),
+        db.Boolean,
         nullable=False
     )
 
@@ -44,7 +44,7 @@ class Employee(db.Model):
     # )
 
     cnic = db.Column(
-        db.Integer(13),
+        db.String(13),
         unique=True,
         nullable=False
     )
@@ -59,10 +59,10 @@ class Employee(db.Model):
     # owned_companies = association_proxy("company_users", "owned_company")
 
     def __repr__(self):
-        return '<User %r>' % self.Emp_Email
+        return '<User %r>' % self.email
 
     def __str__(self):
-        return self.Emp_Email
+        return self.email
 
     def verify_password(self, password):
         return check_password_hash(self.password, password)
