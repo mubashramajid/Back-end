@@ -3,7 +3,13 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_utils import EmailType
 from werkzeug.security import generate_password_hash, check_password_hash
 from src.app import db
+import enum
 
+
+class EmployeeTypes(enum.Enum):
+    LINE_MANAGER = 0
+    PROJECT_MANAGER = 1
+    EMPLOYEE = 2
 
 class Employee(db.Model):
     __tablename__ = "Employee"
