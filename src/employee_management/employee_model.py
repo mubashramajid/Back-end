@@ -55,6 +55,13 @@ class Employee(db.Model):
         unique=True,
         nullable=False
     )
+
+    # phonenumber = db.Column(
+    #     db.String(15),
+    #     unique=True,
+    #     nullable=False
+    # )
+
     # profile = relationship(
     #     "Profile",
     #     uselist=False,
@@ -81,6 +88,5 @@ class Employee(db.Model):
     @password_hash.setter
     def password_hash(self, password):
         self.password = generate_password_hash(password)
-        self.extend_password_expiry()
 
 
