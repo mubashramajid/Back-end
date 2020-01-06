@@ -1,7 +1,7 @@
 from flask_restplus import Resource
 from src.app import api
 from src.employee_management.employee_validation import EmployeeValidation, EmployeeValidationUpdate
-from webargs.flaskparser import use_args
+sfrom webargs.flaskparser import use_args
 from src import db
 from src.employee_management.employee_model import Employee, EmployeeTypes
 from sqlalchemy import delete, update
