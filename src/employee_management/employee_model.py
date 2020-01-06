@@ -4,6 +4,7 @@ from sqlalchemy_utils import EmailType
 from werkzeug.security import generate_password_hash, check_password_hash
 from src import db
 import enum
+from sqlalchemy import Enum
 
 
 class EmployeeTypes(enum.Enum):
@@ -23,12 +24,10 @@ class Employee(db.Model):
     )
     firstName = db.Column(
         db.Unicode(80),
-        unique=True,
         nullable=False
     )
     lastName = db.Column(
         db.Unicode(80),
-        unique=True,
         nullable=False
     )
     email = db.Column(
@@ -40,27 +39,29 @@ class Employee(db.Model):
         db.String(128),
         nullable=False
     )
+    employee_type = db.Column(
+        Enum(EmployeeTypes),
+        default=EmployeeTypes.EMPLOYEE
+    )
     gender = db.Column(
         db.Boolean,
         nullable=False
     )
-
-    # super_admin = db.Column(
-    #     db.Boolean,
-    #     default=False
-    # )
-
+    super_admin = db.Column(
+        db.Boolean,
+        default=False
+    )
     cnic = db.Column(
         db.String(13),
         unique=True,
         nullable=False
     )
 
-    # phonenumber = db.Column(
-    #     db.String(15),
-    #     unique=True,
-    #     nullable=False
-    # )
+    phonenumber = db.Column(
+     db.String(15),
+     unique=True,
+     nullable=False
+    )
 
     # profile = relationship(
     #     "Profile",

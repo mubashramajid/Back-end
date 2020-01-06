@@ -30,9 +30,7 @@ def upgrade():
     sa.Column('cnic', sa.String(length=13), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('cnic'),
-    sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('firstName'),
-    sa.UniqueConstraint('lastName')
+    sa.UniqueConstraint('email')
     )
     # ### end Alembic commands ###
 

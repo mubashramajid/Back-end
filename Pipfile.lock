@@ -1,7 +1,7 @@
 {
     "_meta": {
-        "hassh": {
-            "sha256": "86469386a5d6ad33a949153f8f0a6202be72c16aab70ce7d8a2d0db9f6388049"
+        "hash": {
+            "sha256": "e88f651df1ea1b89048b34b4cd55081d920177c7a01b34b565359a29bba142a4"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -50,6 +50,14 @@
             ],
             "index": "pypi",
             "version": "==1.1.1"
+        },
+        "flask-marshmallow": {
+            "hashes": [
+                "sha256:4f507f883838b397638a3a36c7d36ee146b255a49db952f5d9de3f6f4522e8a8",
+                "sha256:69e99e3a123393894884a032ae2d11e6bdf4519a505819b66cec7eda32057741"
+            ],
+            "index": "pypi",
+            "version": "==0.10.1"
         },
         "flask-migrate": {
             "hashes": [
@@ -158,14 +166,6 @@
             ],
             "index": "pypi",
             "version": "==1.5.1"
-        },
-        "marshmallow-sqlalchemy": {
-            "hashes": [
-                "sha256:0d72beaf777f8b420c4dc94684252ae0e0a79556ccc4128129d2588f9ff72888",
-                "sha256:93fd8fad2b33d92a1ae58328eeb0f39ed174858d82f9e7084a174df7b41fd3a4"
-            ],
-            "index": "pypi",
-            "version": "==0.21.0"
         },
         "more-itertools": {
             "hashes": [

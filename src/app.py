@@ -2,6 +2,7 @@ from flask import Flask
 import os
 from flask_restplus import Api
 from flask_migrate import Migrate
+from flask_marshmallow import Marshmallow
 from dotenv import load_dotenv
 from src import db
 
@@ -22,6 +23,7 @@ api = Api(
 
 db.init_app(app)
 migrate = Migrate(app, db)
+marshmallow_app = Marshmallow(app)
 
 from src.error_handlers import *
 import src.employee_management.employee_endpoint
