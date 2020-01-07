@@ -6,7 +6,6 @@ verify_ssl = true
 [dev-packages]
 python-dotenv = "*"
 
-
 [packages]
 flask = "*"
 flask-restplus = "*"
@@ -20,10 +19,11 @@ phonenumbers = "*"
 PyJWT = "*"
 SQLAlchemy-Utils = "*"
 webargs= "*"
-
-
-
-
+api = "*"
+db = "*"
+utils = "*"
+auth = "*"
+passlib = "*"
 
 [requires]
 python_version = "3.7"
