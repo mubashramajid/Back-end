@@ -9,5 +9,5 @@ from sqlalchemy import Enum
 class Login(db.Model):
     __tablename__ = "Login"
     __table_args__ = {
-           
+
     }

@@ -89,5 +89,3 @@ class Employee(db.Model):
     @password_hash.setter
     def password_hash(self, password):
         self.password = generate_password_hash(password)
-
-
