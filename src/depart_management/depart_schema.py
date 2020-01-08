@@ -2,7 +2,7 @@ from marshmallow import fields, Schema
 
 from src.db import db
 from src.app import marshmallow_app
-from src.hr_management.depart_model import Department
+from src.depart_management.depart_model import Department
 
 
 class DepartmentSchema(marshmallow_app.ModelSchema):

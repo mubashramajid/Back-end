@@ -1,9 +1,9 @@
 from flask_restplus import Resource
 from src.app import api
-from src.employee_management.employee_validation import EmployeeValidation, EmployeeValidationUpdate
+from src.depart_management.depart_validation import DepartmentValidation, EmployeeValidationUpdate
 from webargs.flaskparser import use_args
 from src import db
-from src.hr_management.depart_model import Department
+from src.depart_management.depart_model import Department
 from sqlalchemy import delete, update
 # from src.employee_management.employee_schema import employee_schema
 from werkzeug.exceptions import HTTPException

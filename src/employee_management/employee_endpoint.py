@@ -12,7 +12,7 @@ import os
 employee_namespace = api.namespace("employee", description="endpoints for Employee module")
 
 
-@api.route('/employee/tasks')
+@api.route('/employee/')
 class EmployeesList(Resource):
     # get list of all employees
     def get(self):
@@ -57,7 +57,7 @@ class EmployeesList(Resource):
         pass
 
 
-@api.route('/employee/tasks/<int:id>')
+@api.route('/employee/<int:id>')
 class EmployeelistAPI(Resource):
     def get(self, id):
         result = db.session.query(Employee).filter(Employee.id == id).first()

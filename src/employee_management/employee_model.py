@@ -1,10 +1,13 @@
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_utils import EmailType
+from sqlalchemy import Enum
+from sqlalchemy import Table,Column, Integer, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
 from werkzeug.security import generate_password_hash, check_password_hash
 from src import db
 import enum
-from sqlalchemy import Enum
+
 
 
 class EmployeeTypes(enum.Enum):
@@ -30,6 +33,7 @@ class Employee(db.Model):
         db.Unicode(80),
         nullable=False
     )
+
     email = db.Column(
         EmailType,
         unique=True,
@@ -39,29 +43,51 @@ class Employee(db.Model):
         db.String(128),
         nullable=False
     )
-    employee_type = db.Column(
-        Enum(EmployeeTypes),
-        default=EmployeeTypes.EMPLOYEE
-    )
+
     gender = db.Column(
         db.Boolean,
         nullable=False
     )
-    super_admin = db.Column(
-        db.Boolean,
-        default=False
+    designation = db.Column(
+        db.Unicode(80),
+        nullable=False
     )
     cnic = db.Column(
         db.String(13),
         unique=True,
         nullable=False
     )
-
     phonenumber = db.Column(
-     db.String(15),
-     unique=True,
-     nullable=False
+        db.String(15),
+        unique=True,
+        nullable=False
     )
+    joinDate = db.Column(
+        db.Date,
+        nullable=False
+    )
+    leaveDate = db.Column(
+        db.Date,
+        nullable=False
+    )
+    employee_type = db.Column(
+        Enum(EmployeeTypes),
+        default=EmployeeTypes.EMPLOYEE
+    )
+    # Foriegn Key Relationship with Department Table - one to one
+    employee_RS = db.Column(
+        db.Integer,
+        db.ForeignKey('Employee.id')
+    )
+    employee = relationship("Employee", back_populates="Department")
+
+    # Foriegn Key Relationship with Team Table - one to many
+
+
+    # super_admin = db.Column(
+    #     db.Boolean,
+    #     default=False
+    # )
 
     # profile = relationship(
     #     "Profile",
