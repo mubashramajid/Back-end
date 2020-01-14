@@ -1,8 +1,7 @@
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_utils import EmailType
-from sqlalchemy import Enum
-from sqlalchemy import Table,Column, Integer, ForeignKey
+from sqlalchemy import Enum, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from werkzeug.security import generate_password_hash, check_password_hash
 from src import db
@@ -25,6 +24,25 @@ class Employee(db.Model):
         db.Integer,
         primary_key=True
     )
+
+    # Employee (Child) table is Foriegn key for Department Table - one to one
+    department_id = db.Column(
+        db.Integer,
+        db.ForeignKey('department.id'),
+        nullable=False
+    )
+    department = db.relationship("Department", back_populates="Employee")
+
+
+    #Employee (Parent) table is Primary key for Team Table - one to many RS
+    team = db.relationship("Team", back_populates="Employee")
+
+
+    # Employee (Parent) table is primary key for Form table - one to many RS
+    form = db.relationship("Form", back_populates="Employee")
+
+
+
     firstName = db.Column(
         db.Unicode(80),
         nullable=False
@@ -63,26 +81,17 @@ class Employee(db.Model):
         nullable=False
     )
     joinDate = db.Column(
-        db.Date,
-        nullable=False
+        db.String(15),
+        # nullable=True
     )
     leaveDate = db.Column(
-        db.Date,
-        nullable=False
+        db.String(15),
+        # nullable=True
     )
     employee_type = db.Column(
         Enum(EmployeeTypes),
         default=EmployeeTypes.EMPLOYEE
     )
-    # Foriegn Key Relationship with Department Table - one to one
-    employee_RS = db.Column(
-        db.Integer,
-        db.ForeignKey('Employee.id')
-    )
-    employee = relationship("Employee", back_populates="Department")
-
-    # Foriegn Key Relationship with Team Table - one to many
-
 
     # super_admin = db.Column(
     #     db.Boolean,

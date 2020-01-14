@@ -6,15 +6,11 @@ from src.depart_management.depart_model import Department
 
 
 class DepartmentSchema(marshmallow_app.ModelSchema):
-    # first_name = fields.String()
-    # last_name = fields.String()
-    # cnic = fields.String()
-    # gender = fields.Boolean()
-    # email = fields.Email()
-    # phonenumber = fields.String()
+    # id=fields.String()
+    departName=fields.String()
 
-    class Meta:
-        model = Department,
+class Meta:
+     model = Department,
 
 
-depart_schema = DepartmentSchema()
+department_schema = DepartmentSchema()

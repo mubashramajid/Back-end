@@ -5,27 +5,12 @@ import re
 
 class DepartmentValidation(Schema):
 
-    first_name = fields.String(
+    depart_name = fields.String(
         required=True,
-        error_messages={"required": "Please enter First name."}
+        error_messages={"required": "Please enter Department name."}
     )
 
-    last_name = fields.String(
+    no_Of_Employee = fields.String(
         required=True,
-        error_messages={"required": "Please enter Last name."}
-    )
-
-    depart_Name = fields.String(
-        required=True,
-        error_messages={"required": "Please enter Department name."},
-    )
-
-    employee_Designation = fields.String(
-        required=True,
-        error_messages={"required": "Please enter Employee Designation."}
-    )
-
-    team_Name = fields.String(
-        required=True,
-        error_messages={"required": "Please enter Team name.."}
+        error_messages={"required": "Please enter No. of Employees in the Department."}
     )

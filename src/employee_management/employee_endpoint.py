@@ -48,7 +48,10 @@ class EmployeesList(Resource):
                 cnic=form_data['cnic'],
                 employee_type=form_data["employee_type"],
                 gender=form_data["gender"],
-                phonenumber=form_data["phonenumber"]
+                phonenumber=form_data["phonenumber"],
+                designation = form_data["designation"],
+                joinDate = form_data["join_Date"],
+                leaveDate = form_data["leave_Date"]
             )
             new_employee.password_hash = form_data["password"]
             db.session.add(new_employee)
@@ -61,9 +64,11 @@ class EmployeesList(Resource):
 class EmployeelistAPI(Resource):
     def get(self, id):
         result = db.session.query(Employee).filter(Employee.id == id).first()
-        return {"result": {"first_name": result, "last_name": result, "email": result, "cnic": result,
-                           "employee_type": result, "gender": result, "phonenumber": result}}
-
+        # return {"result": {"first_name": result, "last_name": result, "email": result, "cnic": result,
+        #                    "employee_type": result, "gender": result, "phonenumber": result, "designation": result}}
+        return{"result": {
+            result : "first_name"
+        }}
     # Update an existing Employee
     @use_args(EmployeeValidationUpdate())
     def put(self, form_data, id):
@@ -76,12 +81,15 @@ class EmployeelistAPI(Resource):
         result.cnic = form_data["cnic"],
         result.employee_type = form_data["employee_type"],
         result.gender = form_data["gender"],
-        result.phonenumber = form_data["phonenumber"]
-
+        result.phonenumber = form_data["phonenumber"],
+        result.designation = form_data["designation"],
+        result.joinDate = form_data["join_Date"],
+        result.leaveDate = form_data["leave_Date"]
         db.session.add(result)
         db.session.commit()
 
     # delete and existing entry
+
     def delete(self, id):
         try:
             if db.session.query(Employee).filter(Employee.id == id).delete() is not None:
@@ -89,7 +97,6 @@ class EmployeelistAPI(Resource):
                 return {"messages", "Employee removed successfully"}
             else:
                 return {'id not found'}
-
 
         except HTTPException as error:
 

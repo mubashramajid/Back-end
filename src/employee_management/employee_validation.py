@@ -46,6 +46,20 @@ class EmployeeValidation(Schema):
         required=True,
         error_messages={"required": "Please select Employee Type."}
     )
+    #10/1/2020
+
+    designation = fields.String(
+        required=True,
+        error_messages={"required": "Please enter designation."}
+    )
+    join_Date = fields.Date(
+        required=True,
+        error_messages={"required": "Please enter joining date."}
+    )
+    leave_Date = fields.Date(
+        required=True,
+        error_messages={"required": "Please enter leaving date."}
+    )
 
     # we are explicitly keeping load_only True, to avoid any accident where we write the password to JSON.
     # If anyone mistakenly re-used this schema for Response, it will never send password in the JSON.
