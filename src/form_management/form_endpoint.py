@@ -20,6 +20,44 @@ class FormList(Resource):
         get_data = db.session.query(Form).all()
         result = []
         for row in get_data:
-            result.append({"issue_date": row.issueDate,"no_of_form_generate": row.noOfFormGenerate})
+            result.append(
+                {
+                    "issue_Date": row.issueDate,
+                    "no_Of_Form_Generate": row.noOfFormGenerate,
+                    "emp_id": row.employee_id,
+                    "rev_id": row.review_id
+                }
+            )
         return {"data": result}
         pass
+
+
+    @use_args(FormValidation())
+    def post(self, form_data):
+        new_form = Form(
+            issueDate= form_data["issue_Date"],
+            noOfFormGenerate= form_data["no_Of_Form_Generate"],
+            employee_id= form_data["emp_id"],
+            review_id=form_data["rev_id"]
+        )
+        db.session.add(new_form)
+        db.session.commit()
+        return {"message": "Form has been added successfully."}
+        pass
+
+@api.route('/form/<int:id>')
+class FormListAPI(Resource):
+
+    @use_args(FormValidation())
+    def put(self,form_data, id):
+        result = db.session.query(Form).filter(Form == id).update(
+            {
+                    "issueDate": form_data["issue_Date"],
+                    "noOfFormGenerate": form_data["no_of_Form_Generate"],
+                    "employee_id" : form_data["emp_id"],
+                    "review_id" : form_data["rev_id"]
+            }
+        )
+        db.session.commit()
+        return{"message": "Form has been updated successfully."}
+        passs

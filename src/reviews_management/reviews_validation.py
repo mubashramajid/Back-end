@@ -4,12 +4,12 @@ import re
 
 class ReviewsValidation(Schema):
 
-    initiateDate = fields.Date(
+    initiate_Date = fields.Date(
         required=True,
         error_messages={"required": "Please enter Review Initiate Date."}
     )
 
-    completionDate = fields.Date(
+    completion_Date = fields.Date(
         required=True,
         error_messages={"required": "Please enter Review Completion Date."}
     )

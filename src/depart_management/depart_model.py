@@ -19,7 +19,7 @@ class Department(db.Model):
     )
 
     # department (parent) table is primary key for employee table - one to many
-    employees = db.relationship("Employee", uselist=False, back_populates="Department")
+    # employees = db.relationship("Employee", back_populates="department")
 
     departName = db.Column(
         db.Unicode(80),

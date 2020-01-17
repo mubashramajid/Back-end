@@ -19,7 +19,7 @@ class Reviews(db.Model):
     )
 
     # Reviews (Parent) table is Primary key for Form table - one to many RS
-    form = db.relationship('Form', back_populates="Reviews")
+    # form = db.relationship('Form', back_populates="Reviews")
 
     initiateDate = db.Column(
         db.Date,

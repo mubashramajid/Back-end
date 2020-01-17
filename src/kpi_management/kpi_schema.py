@@ -8,8 +8,8 @@ class KPISchema(marshmallow_app.ModelSchema):
     # kpi_name=fields.string()
     kpiAttribute=fields.String()
     initiateDate=fields.Date()
-    initiateMonth=fields.String()
-    initiateYear=fields.String()
+    completionDate=fields.Date()
+    department_id = fields.String()
 class Meta:
     model = KPI,
 

@@ -19,14 +19,24 @@ class Form(db.Model):
         primary_key=True
     )
 
-    # Form (Parent) table is Primary key for Comment table - One to many RS
-    comments = db.relationship('Comments', back_populates="Form")
-
     # Form (child) table is foreign key for Employee Table - many to one RS
-    employee_id = db.Column(db.Integer, db.ForeignKey('Employee.id'))
+    employee_id = db.Column(
+        db.Integer,
+        db.ForeignKey('employee.id'),
+        nullable=False
+    )
 
     # Form (child) table is foreign key for Review Table - many to one RS
-    review_id = db.Column(db.Integer, db.ForeignKey('Form.id'))
+    # review_id = db.Column(
+    #     db.Integer,
+    #     db.ForeignKey('form.id'),
+    #     nullable=False
+    # )
+
+    # Form (Parent) table is Primary key for Comment table - One to many RS
+    # comments = db.relationship('Comments', back_populates="Form")
+
+
 
     issueDate = db.Column(
         db.Date,

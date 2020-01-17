@@ -16,7 +16,7 @@ class EmployeeTypes(enum.Enum):
 
 
 class Employee(db.Model):
-    __tablename__ = "Employee"
+    __tablename__ = "employee"
     __table_args__ = {
 
     }
@@ -25,21 +25,21 @@ class Employee(db.Model):
         primary_key=True
     )
 
-    # Employee (Child) table is Foriegn key for Department Table - one to one
+    #  Employee (Child) table is Foriegn key for Department Table - one to one
+
     department_id = db.Column(
         db.Integer,
         db.ForeignKey('department.id'),
         nullable=False
     )
-    department = db.relationship("Department", back_populates="Employee")
+    #
+    # department = db.relationship("Department", back_populates="employee")
 
+    # #Employee (Parent) table is Primary key for Team Table - one to many RS
+    # team = db.relationship("Team", back_populates="Employee")
 
-    #Employee (Parent) table is Primary key for Team Table - one to many RS
-    team = db.relationship("Team", back_populates="Employee")
-
-
-    # Employee (Parent) table is primary key for Form table - one to many RS
-    form = db.relationship("Form", back_populates="Employee")
+    # # Employee (Parent) table is primary key for Form table - one to many RS
+    # form = db.relationship("Form", back_populates="Employee")
 
 
 

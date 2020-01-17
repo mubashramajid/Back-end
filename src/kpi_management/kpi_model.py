@@ -19,7 +19,7 @@ class KPI(db.Model):
     )
 
     # KPI (Parent) table is primary key of Comment table - one to many RS
-    comments = db.relationship("Comments", back_populates="KPI")
+    # comments = db.relationship("Comments", back_populates="KPI")
 
 
     kpiAttribute = db.Column(
@@ -33,12 +33,20 @@ class KPI(db.Model):
         nullable=False
     )
 
-    initiateMonth = db.Column(
-        db.Unicode(80),
+    completionDate = db.Column(
+        db.Date,
         nullable=False
     )
 
-    initiateYear = db.Column(
-        db.Unicode(80),
+    #  KPI (Child) table is Foriegn key for Department Table - one to one
+
+    # department_id = db.Column(
+    #     db.Integer,
+    #     db.ForeignKey('department.id'),
+    #     nullable=False
+    # )
+
+    department_id = db.Column(
+        db.String(30),
         nullable=False
     )

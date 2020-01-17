@@ -5,12 +5,17 @@ import re
 
 class DepartmentValidation(Schema):
 
+    id = fields.Integer(
+
+    )
+
     depart_name = fields.String(
         required=True,
         error_messages={"required": "Please enter Department name."}
     )
 
-    no_Of_Employee = fields.String(
-        required=True,
-        error_messages={"required": "Please enter No. of Employees in the Department."}
-    )
+    # no_Of_Employee = fields.String(
+    #     required=True,
+    #     error_messages={"required": "Please enter No. of Employees in the Department."}
+    # )
+

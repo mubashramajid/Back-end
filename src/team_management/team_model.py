@@ -19,7 +19,11 @@ class Team(db.Model):
     )
 
     #Team (child) table is foreign key for Employee Table - many to one RS
-    employee_id = db.Column(db.Integer, db.ForeignKey('Employee.id'))
+    employee_id = db.Column(
+        db.Integer,
+        db.ForeignKey('employee.id'),
+        nullable=False
+    )
 
 
     teamName = db.Column(

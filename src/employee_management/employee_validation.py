@@ -61,6 +61,11 @@ class EmployeeValidation(Schema):
         error_messages={"required": "Please enter leaving date."}
     )
 
+    depart_id = fields.String(
+        required=True,
+        error_messages={"required": "Please enter Department ID."}
+    )
+
     # we are explicitly keeping load_only True, to avoid any accident where we write the password to JSON.
     # If anyone mistakenly re-used this schema for Response, it will never send password in the JSON.
     password = fields.String(
